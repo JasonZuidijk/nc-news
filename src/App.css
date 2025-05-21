@@ -40,3 +40,9 @@
 .read-the-docs {
   color: #888;
 }
+
+#article-image{
+  border-radius: 4%;
+  max-width: 50%;
+  height: auto;
+}
