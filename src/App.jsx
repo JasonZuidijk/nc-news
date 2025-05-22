@@ -1,11 +1,12 @@
-import { useState } from "react";
 import "./App.css";
-import {  Routes, Route } from "react-router-dom";
-import Articles from "./components/Articles";
+import { Routes, Route } from "react-router-dom";
+import ArticlesList from "./components/Articles";
+import NavBar from "./components/NavigationBar";
+import Home from "./components/Home";
+import Topics from "./components/Topics";
+import SingleArticle from "./components/Article";
 
 function App() {
-
-
   return (
     <>
       <div>
@@ -14,17 +15,21 @@ function App() {
           <label> 31/12/1999</label>
           <h1>The NC Daily</h1>
           <h2>
-            <form>
-              <button>Topics</button>
-              <button>Articles</button>
-            </form>
+            <NavBar></NavBar>
           </h2>
         </header>
-        <div>
-        <Articles></Articles>
-        </div>
+        <Routes>
+          <Route path="/" element={<Home />}></Route>
+          <Route path="/articles" element={<ArticlesList />}></Route>
+          <Route path="/Topics" element={<Topics />}></Route>
+          <Route
+            path="/articles/:article_id"
+            element={<SingleArticle />}
+          ></Route>
+        </Routes>
+
         <footer>
-          <p1>Copyright, contact etc</p1>
+          <p1>contact etc</p1>
         </footer>
       </div>
     </>

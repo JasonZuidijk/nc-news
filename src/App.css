@@ -41,8 +41,62 @@
   color: #888;
 }
 
-#article-image{
+#article-image {
   border-radius: 4%;
   max-width: 50%;
   height: auto;
 }
+
+.single-article {
+  padding: 2rem;
+  max-width: 900px;
+  margin: 0 auto;
+  border-top: 1px solid;
+  font-family: sans-serif;
+}
+
+#single-article-image {
+  float: left;
+  width: 300px;
+  height: auto;
+  margin-right: 1.5rem;
+  margin-left: 1.5rem;
+  margin-bottom: 1rem;
+  border-radius: 4%;
+  object-fit: cover;
+}
+
+.article-content {
+  text-align: left;
+}
+
+.article-content::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.article-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  border-top: 1px solid;
+}
+
+.article-info {
+  text-align: left;
+  font-size: 0.9rem;
+}
+
+.article-vote {
+  display: flex;
+  align-items: center;
+  font-size: 0.9rem;
+}
+
+.comment-button{
+  margin-top: 1rem;
+}
+
+
+
