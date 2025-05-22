@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getArticleById } from "../api";
+import ShowComments from "./Comments";
 
 function SingleArticle() {
   const { article_id } = useParams();
   const [article, setArticle] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
-  const [formattedDate, setFormattedDate] = useState();
+  const [showComments, setShowComments] = useState(false);
 
   useEffect(() => {
     getArticleById(article_id)
@@ -16,7 +17,7 @@ function SingleArticle() {
       })
       .catch((error) => {
         console.error("Error fetching article:", error);
-        setIsLoading(true);
+        setIsLoading(false);
       });
   }, [article_id]);
 
@@ -49,30 +50,37 @@ function SingleArticle() {
         <p className="single-article-text">{article.body}</p>
       </div>
       <footer className="article-footer">
-          <div className="article-info">
-            <p>
-              Written by <strong>{article.author}</strong>
-            </p>
-            <p>
-              Date: <strong>{dateFunc}</strong>
-            </p>
-          </div>
+        <div className="article-info">
+          <p>
+            Written by <strong>{article.author}</strong>
+          </p>
+          <p>
+            Date: <strong>{dateFunc}</strong>
+          </p>
+        </div>
 
-          <div className="article-vote">
-            <p>
-              <button>Like ⬆️ </button>
-              <strong> {article.votes} </strong>
-              <button> ⬇️ I'm a hater</button>
-            </p>
-          </div>
+        <div className="article-vote">
+          <p>
+            <button id="button-format">Like ⬆️ </button>
+            <strong id="vote-count"> {article.votes} </strong>
+            <button id="button-format"> ⬇️ I'm a hater</button>
+          </p>
+        </div>
 
-          <div className="comment-button">
-            <button>
-              <strong>Comment</strong>
-            </button>
-          </div>
-
-        </footer>
+        <div className="comment-button">
+          <button id="button-format">
+            <strong>Comment</strong>
+          </button>
+        </div>
+      </footer>
+      <div className="comments-toggle">
+        <p>
+          <button onClick={() => setShowComments(!showComments)}id="button-format">
+            {showComments ? "Hide Comments 🙈" : "Show Comments 👀"}
+          </button>
+        </p>
+       {showComments && <ShowComments article_id={article_id} />}
+      </div>
     </div>
   );
 }
