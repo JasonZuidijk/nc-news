@@ -135,4 +135,17 @@
   background-color: rgb(214, 212, 253);
 }
 
+#monkey {
+  width: 1000px;
+  height: auto;
+  border: n solid green;
+}
 
+.title {
+  font-family: 'title';
+}
+
+@font-face {
+  font-family: title;
+  src: url(./src/fonts/Miskan.ttf);
+}

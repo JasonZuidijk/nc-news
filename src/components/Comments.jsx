@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { getCommentsByArticleId } from "../api";
+import VoteButtons from "./VoteButtons";
 
 function ShowComments({ article_id }) {
   const [comments, setComments] = useState([]);
@@ -30,11 +31,17 @@ function ShowComments({ article_id }) {
       <ul className="comments-list">
         {comments.map((comment) => (
           <li key={comment.comment_id} className="comment-card">
-            <p><strong>{comment.author}</strong></p>
+            <p>
+              <strong>{comment.author}</strong>
+            </p>
             <p>{comment.body}</p>
-            <p><button id="button-format">Like ⬆️ </button>
-            <strong id="vote-count"> {comment.votes} </strong>
-            <button id="button-format"> ⬇️ I'm a hater</button></p>
+            <p>
+              <VoteButtons
+                id={comment.comment_id}
+                initialVotes={comment.votes}
+                type="comment"
+              />
+            </p>
             <p id="comment-date">
               {new Date(comment.created_at).toLocaleDateString("en-GB", {
                 month: "long",

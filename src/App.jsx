@@ -13,7 +13,7 @@ function App() {
         <header>
           <button>User Profile, hard coded, maybe circle</button>
           <label> 31/12/1999</label>
-          <h1>The NC Daily</h1>
+          <h1 className="title">The NC Daily</h1>
           <h2>
             <NavBar></NavBar>
           </h2>
@@ -28,8 +28,8 @@ function App() {
           ></Route>
         </Routes>
 
-        <footer>
-          <p1>contact etc</p1>
+        <footer className="footer">
+          <p1>Copyright contact</p1>
         </footer>
       </div>
     </>

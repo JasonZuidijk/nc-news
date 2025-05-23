@@ -2,12 +2,14 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getArticleById } from "../api";
 import ShowComments from "./Comments";
+import VoteButtons from "./VoteButtons";
 
 function SingleArticle() {
   const { article_id } = useParams();
   const [article, setArticle] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [showComments, setShowComments] = useState(false);
+  const [voteCount, setVoteCount] = useState(0);
 
   useEffect(() => {
     getArticleById(article_id)
@@ -61,9 +63,11 @@ function SingleArticle() {
 
         <div className="article-vote">
           <p>
-            <button id="button-format">Like ⬆️ </button>
-            <strong id="vote-count"> {article.votes} </strong>
-            <button id="button-format"> ⬇️ I'm a hater</button>
+            <VoteButtons
+              id={article_id}
+              initialVotes={article.votes}
+              type="article"
+            />
           </p>
         </div>
 
@@ -75,11 +79,14 @@ function SingleArticle() {
       </footer>
       <div className="comments-toggle">
         <p>
-          <button onClick={() => setShowComments(!showComments)}id="button-format">
+          <button
+            onClick={() => setShowComments(!showComments)}
+            id="button-format"
+          >
             {showComments ? "Hide Comments 🙈" : "Show Comments 👀"}
           </button>
         </p>
-       {showComments && <ShowComments article_id={article_id} />}
+        {showComments && <ShowComments article_id={article_id} />}
       </div>
     </div>
   );

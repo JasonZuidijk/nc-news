@@ -23,3 +23,12 @@ export const getCommentsByArticleId = (articleId) => {
     return response.data.comments;
   });
 };
+
+
+  export const updateVotes = (type, id, voteChange) => {
+    const endpoint = type === "article"
+      ? `/articles/${id}`
+      : `/comments/${id}`;
+      
+    return NewsBaseApi.patch(endpoint, { inc_votes: voteChange });
+  };
