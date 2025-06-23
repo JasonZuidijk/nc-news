@@ -3,7 +3,7 @@ import { updateVotes } from "../api";
 
 function VoteButtons({ id, initialVotes, type }) {
   const [voteCount, setVoteCount] = useState(initialVotes);
-  const [userVote, setUserVote] = useState(0); 
+  const [userVote, setUserVote] = useState(0);
   const [voteError, setVoteError] = useState(null);
 
   const handleVote = (change) => {

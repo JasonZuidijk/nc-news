@@ -94,4 +94,3 @@ function SingleArticle() {
 
 export default SingleArticle;
 
-//topic and votes
